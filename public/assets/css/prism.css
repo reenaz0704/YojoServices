@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Template 5 — PRISM PULSE (loaded only when active)
+   Bright magenta → scarlet → orange → yellow → lime gradients on warm black.
+   Layout modules: cascade carousel, spotlight slider, stacked cards,
+   showcase pills, roadmap ascent, fanned cards.
+   ========================================================================== */
+:root[data-template="prism"] {
+  --bg: #0a0507; --deep: #120a0d; --deep-2: #1c0f15; --deep-rgb: 18 10 13;
+  --a1: 255 47 185;  --a1-d: 120 14 84;  --a1-l: 255 170 226;
+  --a2: 255 122 26;  --a2-d: 125 52 6;   --a2-l: 255 196 150;
+  --a3: 255 229 59;  --a3-d: 120 104 10; --a3-l: 255 242 160;
+  --lime: 59 255 122; --scarlet: 255 46 77;
+  --on-accent: #12040a;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Syne", "Inter", sans-serif;
+  --font: var(--font-body);
+  --grad: linear-gradient(100deg, rgb(var(--a1)) 0%, rgb(var(--scarlet)) 30%, rgb(var(--a2)) 60%, rgb(var(--a3)) 100%);
+  --grad-light: linear-gradient(100deg, rgb(var(--a1)) 0%, rgb(var(--a2)) 40%, rgb(var(--a3)) 70%, rgb(var(--lime)) 100%);
+  --glass: rgba(20, 10, 16, .55);
+  --radius: 26px;
+}
+body { font-family: var(--font-body); }
+h1, h2, h3, .h2, .hs__title { font-family: var(--font-display); font-weight: 800; letter-spacing: -.035em; }
+.pz-title, .fw__head h2 { font-size: clamp(2rem, 5vw, 4rem) !important; line-height: .98; }
+.eyebrow { color: rgb(var(--a3)); }
+
+/* ---------- Header: floating centred pill (like a product library nav) ---------- */
+.nav { padding: 14px 16px 0; }
+.nav__bar { max-width: 1280px; margin: 0 auto; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: rgba(18,10,13,.62) !important;
+  box-shadow: 0 20px 50px -25px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.08); }
+.nav.is-scrolled .nav__bar { background: rgba(18,10,13,.85) !important; }
+.nav__inner { padding: 0 10px 0 22px; height: 64px; }
+.nav__link { border-radius: 999px; padding: 8px 14px; font-weight: 500; }
+.nav__link.is-active, .nav__link:hover { background: rgba(255,255,255,.1); color: #fff; }
+@media (max-width: 1099px) { .nav__bar { border-radius: 22px; } }
+
+/* ---------- Buttons: glossy pills with rolling gradient ---------- */
+.btn--primary, .btn--accent { background: var(--grad); background-size: 220% 100%; animation: pzRoll 6s ease-in-out infinite alternate; }
+@keyframes pzRoll { to { background-position: 100% 0; } }
+.btn--ghost, .btn--ghost-dark, .btn--outline-light { border-radius: 999px; }
+
+/* ---------- Hero: centred "mirror hall" stage over the vortex ---------- */
+.hs__inner { justify-items: center; text-align: center; }
+.hs__copy { max-width: 980px; margin: 0 auto; }
+.hs__grad { background: radial-gradient(60% 55% at 50% 48%, rgba(10,5,7,.82), rgba(10,5,7,.35) 60%, transparent 85%) !important; }
+.hs__title, .hs__label { justify-content: center; } .hs__copy { text-align: center; }
+.hs__label { justify-content: center; }
+.hs__title { font-size: clamp(2.6rem, 7.4vw, 6.4rem); line-height: .95; }
+.hs__title .hs__word > span { background: linear-gradient(180deg, #fff 30%, rgb(var(--a2-l))); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hs__title .hs__word:last-child > span { background: var(--grad-light); -webkit-background-clip: text; background-clip: text; }
+.hs__sub { color: rgb(var(--a3)) !important; }
+.hs__text { margin-left: auto; margin-right: auto; max-width: 680px; }
+.hs__actions { justify-content: center; }
+.hs__img { opacity: .1; }
+.hs__slide::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(180deg, transparent, var(--bg)); pointer-events: none; }
+
+/* ---------- Glass cards ---------- */
+:is(.svc-card, .div-card, .ind-card, .icard, .fw-card, .post-card, .case-card, .quote-card, .mini-card, .about-card, .why__item, .stat, .timeline__card, .contact-card, .card-pane) {
+  border-radius: var(--radius) !important;
+  background: linear-gradient(150deg, rgba(255,255,255,.08), rgba(255,255,255,.015) 60%), var(--glass) !important; }
+[data-tilt]::after { background: radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgb(var(--a2) / .2), transparent 45%); }
+:is(.svc-card__icon, .div-card__icon, .ind-card__icon, .fw-card__icon, .icard__icon, .why__icon, .timeline__icon) {
+  color: #fff !important; background: var(--grad) !important; border: 0 !important; box-shadow: 0 10px 30px -10px rgb(var(--a1) / .8) !important; }
+
+/* ---------- Stats: bright gradient band ---------- */
+.stats { background: linear-gradient(100deg, rgb(var(--a1) / .22), rgb(var(--a2) / .18), rgb(var(--a3) / .14)) !important; border-block: 1px solid rgba(255,255,255,.1); }
+.stat__value { font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 4rem) !important; background: var(--grad-light); -webkit-background-clip: text; background-clip: text; }
+
+/* ---------- Who teaser: colonnade statement ---------- */
+.who-teaser__big span { font-family: var(--font-display); }
+.who-teaser__big span:not(.grad-text) { -webkit-text-stroke: 1px rgba(255,255,255,.5); color: transparent; }
+
+/* ---------- Footer ---------- */
+.footer::before { content: ""; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: var(--grad); }
+
+@media (prefers-reduced-motion: reduce) { .btn--primary, .btn--accent { animation: none; } .pz-road .timeline__step { opacity: 1; transform: none; } }
+.hs__title { display: flex; flex-wrap: wrap; justify-content: center; column-gap: .25em; }

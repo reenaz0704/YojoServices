@@ -1,0 +1,12 @@
+# Fallback for hosts where the document root cannot be pointed at /public.
+# Everything is routed into /public; app/, config/, storage/, database/ etc. are never served.
+Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|config|database|resources|routes|storage)(/|$) - [F,L]
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+<FilesMatch "\.(sql|log|ini|env|md|local\.php)$">
+    Require all denied
+</FilesMatch>

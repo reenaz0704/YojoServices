@@ -1,0 +1,210 @@
+<?php
+/**
+ * Seed content: settings, industries, FAQs, blog, legal pages and clearly-labelled placeholders.
+ * Nothing here claims real clients, certifications, awards or achievements.
+ */
+$L = function (array $items) { return implode("\n", $items); };
+
+$settings = [
+    // key, value, group, label, type
+    ['company_name', 'Yojo Solutions', 'company', 'Company name', 'text'],
+    ['company_tagline', 'Cyber Security & IT Consulting Services', 'company', 'Tagline', 'text'],
+    ['company_intro', 'Yojo Solutions is a cybersecurity and IT consulting firm based in Visakhapatnam, India. We help organisations strengthen security, governance and compliance through practical audit, assessment and advisory services.', 'company', 'Short introduction (footer)', 'textarea'],
+    ['address', 'P.No. 664, MIG Midilapuri, VUDA Colony, PM Palem, Madurawada, Visakhapatnam, Andhra Pradesh 530048, India', 'contact', 'Office address', 'textarea'],
+    ['phone_primary', '+91 98000 49797', 'contact', 'Primary phone', 'text'],
+    ['phone_secondary', '+91 89135 71346', 'contact', 'Secondary phone', 'text'],
+    ['email', 'info@yojosolutions.com', 'contact', 'Public email', 'email'],
+    ['notify_email', 'info@yojosolutions.com', 'contact', 'Enquiry notification email (internal)', 'email'],
+    ['whatsapp', '919800049797', 'contact', 'WhatsApp number (digits only)', 'text'],
+    ['business_hours', 'Mon – Sat · 9:30 AM – 6:30 PM IST', 'contact', 'Business hours', 'text'],
+    ['map_embed_query', 'Madurawada, Visakhapatnam', 'contact', 'Map location query', 'text'],
+    ['social_facebook', 'https://www.facebook.com/profile.php?id=61588606573051', 'social', 'Facebook URL', 'url'],
+    ['social_instagram', 'https://www.instagram.com/yojosolutions', 'social', 'Instagram URL', 'url'],
+    ['social_linkedin', '', 'social', 'LinkedIn URL (placeholder — add yours)', 'url'],
+    ['social_x', '', 'social', 'X / Twitter URL', 'url'],
+    ['social_youtube', '', 'social', 'YouTube URL', 'url'],
+    ['main_website', 'https://www.yojosolutions.com', 'company', 'Main corporate website', 'url'],
+    ['hero_eyebrow', 'Audit · GRC · Cybersecurity', 'homepage', 'Hero eyebrow', 'text'],
+    ['hero_title', 'Build Trust. Strengthen Security. Stay Audit-Ready.', 'homepage', 'Hero headline', 'text'],
+    ['hero_subtitle', 'We help organizations identify security gaps, strengthen governance, manage technology risks, and achieve compliance through professional audit and cybersecurity consulting services.', 'homepage', 'Hero supporting text', 'textarea'],
+    ['about_title', 'An independent partner for security, governance and assurance', 'homepage', 'About section title', 'text'],
+    ['about_text', 'We are a team of security and audit practitioners who believe compliance should make organisations genuinely safer — not just produce paperwork. We combine technical testing, control audits and governance advisory under one roof, so findings from a penetration test inform your risk register, and your policies reflect how your systems really work.', 'homepage', 'About section text', 'textarea'],
+    ['cta_title', 'Ready to Strengthen Your Organization\'s Security and Compliance?', 'homepage', 'Final CTA headline', 'text'],
+    ['cta_text', 'Talk to a consultant about your objectives, timelines and the frameworks that matter to your customers. No obligation, and your information stays confidential.', 'homepage', 'Final CTA text', 'textarea'],
+    ['stats_note', 'Figures shown are maintained by Yojo Solutions and updated periodically.', 'homepage', 'Statistics footnote', 'text'],
+    ['seo_title', 'Yojo Solutions — Audit, GRC & Cybersecurity Services', 'seo', 'Default meta title', 'text'],
+    ['seo_description', 'ISO 27001, SOC 2, PCI DSS and DPDPA readiness, VAPT, IT audit and risk advisory from Yojo Solutions, Visakhapatnam.', 'seo', 'Default meta description', 'textarea'],
+    ['legal_disclaimer', 'Yojo Solutions provides consulting, readiness and assessment services. Certifications and attestation reports are issued only by independent accredited bodies or licensed firms.', 'company', 'Footer disclaimer', 'textarea'],
+];
+
+$industries = [
+    ['banking-financial-services', 'Banking & Financial Services', 'bank',
+        'Security and IT governance for banks, NBFCs, fintechs and payment businesses operating under close regulatory scrutiny.',
+        'Financial institutions hold high-value data and money movement capabilities, making them priority targets. Regulators such as the RBI, SEBI and IRDAI expect mature cyber governance, frequent testing and rapid incident reporting.',
+        ['Account takeover and payment fraud', 'Ransomware disrupting core banking', 'Third-party and fintech partner exposure', 'Insider misuse of privileged access', 'API abuse in open-banking integrations'],
+        ['RBI Cyber Security Framework & IT Governance Directions', 'SEBI CSCRF (for regulated entities)', 'PCI DSS', 'ISO/IEC 27001', 'DPDPA 2023'],
+        ['Heavy audit calendars across multiple regulators', 'Legacy core systems with limited logging', 'Evidencing access reviews at scale', 'Managing outsourced IT vendors'],
+        ['Fewer repeat regulatory observations', 'Tested incident response and reporting readiness', 'Reduced card-data scope and fraud exposure', 'Board-level visibility of cyber risk'],
+        ['pci-dss-compliance', 'itgc-audit', 'web-application-vapt', 'api-security-assessment', 'third-party-risk-assessment', 'cyber-risk-assessment']],
+    ['healthcare', 'Healthcare', 'heart',
+        'Protecting patient data and clinical continuity for hospitals, diagnostics, pharma and health-tech.',
+        'Healthcare combines highly sensitive data with life-critical availability. Connected medical devices, telehealth and cloud records widen the attack surface.',
+        ['Ransomware halting clinical systems', 'Exposure of patient records', 'Insecure medical and IoT devices', 'Weak access control on shared workstations'],
+        ['HIPAA (for US data)', 'HITRUST', 'DPDPA 2023', 'ISO/IEC 27001', 'ABDM health data guidelines (where applicable)'],
+        ['Balancing clinician access with least privilege', 'Legacy devices that cannot be patched', 'Limited security staffing', 'Vendor-managed clinical systems'],
+        ['Demonstrable safeguards for health data', 'Improved resilience of clinical services', 'Faster vendor security approvals with US customers'],
+        ['hipaa-compliance', 'hitrust-readiness', 'network-vapt', 'iso-22301-business-continuity', 'privacy-impact-assessment']],
+    ['it-software', 'IT & Software Companies', 'code',
+        'Assurance programmes that help IT services and product companies win and retain enterprise clients.',
+        'IT and software firms process client data and often have privileged access to client environments. Customers increasingly demand certifications, test reports and contractual security commitments.',
+        ['Client data leakage through developers or tools', 'Compromise of client environments via shared access', 'Insecure code released to production', 'Supply-chain risks from open-source dependencies'],
+        ['ISO/IEC 27001', 'SOC 2', 'DPDPA / GDPR as processor', 'Client-specific security schedules'],
+        ['Answering lengthy client security questionnaires', 'Maintaining evidence across many projects', 'Secure SDLC adoption without slowing delivery'],
+        ['Shorter sales cycles with ready assurance artefacts', 'Fewer client audit findings', 'Secure-by-design engineering culture'],
+        ['iso-27001-consulting', 'soc-2-readiness', 'secure-code-review', 'web-application-vapt', 'policy-procedure-development']],
+    ['saas-startups', 'SaaS & Technology Startups', 'rocket',
+        'Right-sized security and compliance for fast-growing SaaS companies selling to enterprises.',
+        'Startups need to prove security maturity long before they have large security teams. The right sequence of controls and reports unlocks enterprise deals without stalling product velocity.',
+        ['Cloud misconfiguration', 'Over-privileged engineers and service accounts', 'API authorisation flaws in multi-tenant platforms', 'Immature incident response'],
+        ['SOC 2 Type I / II', 'ISO/IEC 27001', 'GDPR / DPDPA', 'ISO/IEC 42001 for AI products'],
+        ['Limited time and headcount for compliance', 'Choosing between SOC 2 and ISO 27001', 'Building evidence while shipping weekly'],
+        ['Enterprise-ready security posture', 'Reusable assurance artefacts for sales', 'Scalable controls that grow with the company'],
+        ['soc-2-readiness', 'cloud-security-assessment', 'api-security-assessment', 'iso-42001-ai-management', 'compliance-gap-assessment']],
+    ['education', 'Education', 'book',
+        'Safeguarding student data and academic systems for schools, universities and ed-tech platforms.',
+        'Educational institutions manage large, transient user populations, research data and growing online learning platforms — often with constrained IT budgets.',
+        ['Phishing and credential compromise', 'Exposure of student and minor data', 'Ransomware on campus networks', 'Insecure third-party learning platforms'],
+        ['DPDPA 2023 (including children\'s data obligations)', 'ISO/IEC 27001', 'GDPR (for international students)'],
+        ['Open, decentralised networks', 'High user turnover each academic year', 'Many small vendors and apps'],
+        ['Protected student data and verifiable parental consent processes', 'Resilient online learning services', 'Clear vendor security expectations'],
+        ['dpdpa-compliance', 'data-privacy-assessment', 'network-vapt', 'vendor-risk-assessment', 'policy-procedure-development']],
+    ['manufacturing', 'Manufacturing', 'factory',
+        'Bridging IT and OT security for plants, supply chains and industrial operations.',
+        'Manufacturers face convergence of IT and operational technology, global supply chains and growing customer requirements for supplier security.',
+        ['Ransomware stopping production lines', 'Insecure remote access to OT', 'Intellectual property theft', 'Supplier compromise'],
+        ['ISO/IEC 27001', 'ISO 22301', 'Customer supplier-security requirements', 'IEC 62443 alignment (advisory)'],
+        ['Flat networks between office and plant', 'Legacy control systems', 'Limited downtime for patching'],
+        ['Segmented, monitored plant networks', 'Tested recovery for production systems', 'Stronger position in customer audits'],
+        ['infrastructure-vapt', 'iso-22301-business-continuity', 'third-party-risk-assessment', 'iso-27001-consulting', 'configuration-security-assessment']],
+    ['e-commerce', 'E-commerce', 'cart',
+        'Securing storefronts, payments and customer data for online retailers and marketplaces.',
+        'E-commerce businesses handle payments, personal data and high-traffic web applications, with revenue directly tied to availability and customer trust.',
+        ['Card skimming and payment fraud', 'Account takeover and credential stuffing', 'Business-logic abuse (coupons, pricing)', 'Third-party script and plugin risk'],
+        ['PCI DSS', 'DPDPA 2023', 'GDPR (for EU customers)', 'Consumer Protection (E-Commerce) Rules'],
+        ['Rapid feature releases', 'Many plugins and integrations', 'Peak-season availability pressure'],
+        ['Reduced payment scope and fraud', 'Trusted checkout experience', 'Privacy-compliant marketing practices'],
+        ['pci-dss-compliance', 'web-application-vapt', 'api-security-assessment', 'dpdpa-compliance', 'cloud-security-assessment']],
+    ['professional-services', 'Professional Services', 'briefcase',
+        'Confidentiality and client-trust programmes for consulting, legal, accounting and BPO firms.',
+        'Professional-services firms are trusted with clients\' most confidential information, making them attractive targets and frequent subjects of client due diligence.',
+        ['Business email compromise', 'Leakage of confidential client documents', 'Weak controls at remote and hybrid workers', 'Inconsistent security across offices'],
+        ['ISO/IEC 27001', 'SOC 2 (for outsourced services)', 'DPDPA / GDPR', 'Client contractual requirements'],
+        ['Partner-led cultures resistant to restrictions', 'Client-specific security obligations', 'Protecting data on personal devices'],
+        ['Demonstrable confidentiality controls', 'Faster client onboarding', 'Reduced fraud and email-compromise losses'],
+        ['iso-27001-consulting', 'access-management-audit', 'configuration-security-assessment', 'data-protection-governance', 'cyber-risk-assessment']],
+];
+
+$faqs = [
+    ['What is the difference between a readiness assessment, an internal audit and a certification audit?', 'A readiness assessment identifies gaps against a standard and recommends fixes. An internal audit independently tests whether your management system and controls work. A certification audit is performed by an accredited certification body, which alone can issue the certificate. We provide the first two and help you prepare for the third.', 'Compliance'],
+    ['Does Yojo Solutions issue ISO certificates or SOC 2 reports?', 'No. ISO certificates are issued by accredited certification bodies and SOC 2 reports by licensed CPA firms. We remain independent of those bodies so that our advisory work does not compromise your certification.', 'Compliance'],
+    ['How do you make sure security testing is safe and authorised?', 'Every engagement starts with written authorisation from the asset owner, a defined scope, testing windows, exclusions and emergency contacts. We test only assets you own or are permitted to test.', 'Security testing'],
+    ['What is the difference between a vulnerability assessment and a penetration test?', 'A vulnerability assessment identifies and prioritises known weaknesses broadly. A penetration test goes deeper, safely exploiting weaknesses to demonstrate what an attacker could actually achieve.', 'Security testing'],
+    ['How long does a typical engagement take?', 'A focused VAPT can take one to three weeks including reporting. Readiness programmes for ISO 27001 or SOC 2 commonly run for a few months depending on maturity. We confirm timelines after scoping.', 'Engagements'],
+    ['How is pricing determined?', 'Pricing depends on scope, complexity, number of assets or locations and timelines. After a short scoping call we provide a fixed-fee proposal wherever possible.', 'Engagements'],
+    ['Do you work with organisations outside India?', 'Yes. We support clients remotely and can align to international frameworks such as GDPR, HIPAA and SOC 2, as well as Indian regulations such as the DPDPA and RBI directions.', 'General'],
+    ['How do you protect our confidential information?', 'We sign NDAs, use encrypted channels for evidence exchange, restrict access to engagement teams and securely dispose of data at the end of the engagement. Please do not upload confidential evidence through public website forms.', 'General'],
+    ['Is the online Audit Readiness Assessment an official audit?', 'No. It is a preliminary self-assessment based on your own answers and transparent scoring rules. It is not an audit, certification or assurance opinion, but it is a useful starting point for a conversation.', 'General'],
+    ['Do you provide retesting after remediation?', 'Yes. VAPT engagements normally include a verification retest within an agreed window so you can evidence closure of findings.', 'Security testing'],
+];
+
+$postCategories = [
+    ['cybersecurity-insights', 'Cybersecurity Insights', 'Perspectives on threats, controls and security leadership.'],
+    ['audit-compliance-guides', 'Audit & Compliance Guides', 'Practical guides to frameworks and audit preparation.'],
+    ['regulatory-updates', 'Regulatory Updates', 'What changing regulations mean for your organisation.'],
+    ['industry-news', 'Industry News', 'Notable developments across the security and audit landscape.'],
+    ['technical-articles', 'Technical Articles', 'Hands-on technical deep dives for practitioners.'],
+    ['whitepapers', 'Whitepapers', 'Long-form research and frameworks for decision-makers.'],
+];
+
+$posts = [
+    ['iso-27001-vs-soc-2-which-first', 'audit-compliance-guides', 'ISO 27001 vs SOC 2: Which Should Your Organisation Pursue First?',
+        'Both frameworks signal security maturity, but they differ in output, audience and effort. Here is a practical way to decide.',
+        '<p>For growing technology companies the question is rarely <em>whether</em> to invest in security assurance, but <strong>which</strong> assurance to pursue first. ISO/IEC 27001 and SOC 2 are the two most requested by customers, and while they overlap considerably, they are not interchangeable.</p><h2>What each one produces</h2><p>ISO/IEC 27001 results in a <strong>certificate</strong> issued by an accredited certification body, confirming that your Information Security Management System conforms to the standard. SOC 2 results in an <strong>attestation report</strong> issued by a licensed CPA firm describing your system and the auditor\'s opinion on your controls.</p><h2>Who is asking?</h2><ul><li>Customers in Europe, the Middle East and Asia often ask for ISO 27001.</li><li>North American enterprise buyers frequently request a SOC 2 Type II report.</li></ul><h2>A practical decision path</h2><ol><li>List the last ten security questionnaires or contract clauses you received.</li><li>Identify which assurance artefact would have answered most of them.</li><li>Design a unified control set so evidence can later be reused for the other framework.</li></ol><blockquote>Tip: building controls once and mapping them to both frameworks avoids duplicate effort and audit fatigue.</blockquote><p>Whichever you choose first, start with a gap assessment. It turns a vague goal into a scoped, budgeted roadmap.</p>',
+        ['ISO 27001', 'SOC 2', 'Compliance']],
+    ['dpdpa-readiness-checklist', 'regulatory-updates', 'DPDPA Readiness: A Practical Checklist for Indian Businesses',
+        'India\'s Digital Personal Data Protection Act changes how organisations collect and use personal data. Use this checklist to prioritise your first steps.',
+        '<p>The Digital Personal Data Protection Act, 2023 establishes India\'s first comprehensive data protection law. With the DPDP Rules notified, organisations acting as <strong>Data Fiduciaries</strong> need a structured plan.</p><h2>Start with visibility</h2><ul><li>Build an inventory of personal data, purposes and systems.</li><li>Identify where children\'s data or large volumes of sensitive data are processed.</li></ul><h2>Fix the customer-facing journey</h2><ul><li>Rewrite notices in clear, itemised language.</li><li>Implement consent capture and withdrawal that is as easy as giving consent.</li></ul><h2>Strengthen safeguards</h2><ul><li>Apply reasonable security safeguards proportionate to risk.</li><li>Prepare breach-intimation procedures for the Data Protection Board and affected individuals.</li></ul><h2>Govern and evidence</h2><p>Assign accountable owners, train staff and keep records that demonstrate your decisions. If you may be designated a Significant Data Fiduciary, plan for a DPO, periodic DPIAs and independent data audits.</p><p><em>This article is general information, not legal advice.</em></p>',
+        ['DPDPA', 'Privacy', 'India']],
+    ['api-authorisation-flaws', 'technical-articles', 'Why Broken Object-Level Authorisation Still Tops API Risk Lists',
+        'BOLA flaws are simple to exploit and easy to miss. We explain why they persist and how engineering teams can design them out.',
+        '<p>Broken Object-Level Authorisation (BOLA) occurs when an API returns or modifies an object based on an identifier supplied by the client, without checking that the caller is allowed to access <em>that specific</em> object.</p><h2>Why it persists</h2><ul><li>Authentication is often mistaken for authorisation.</li><li>Checks are implemented per endpoint rather than centrally.</li><li>Automated scanners cannot tell which user should see which record.</li></ul><h2>Designing it out</h2><ol><li>Enforce ownership checks in a shared data-access layer.</li><li>Use unpredictable identifiers as defence in depth — never as the only control.</li><li>Write automated tests that request other tenants\' objects and expect a denial.</li></ol><p>During authorised API assessments we test every object-returning endpoint with multiple user roles and tenants, because this is where the highest-impact findings usually hide.</p>',
+        ['API Security', 'VAPT', 'OWASP']],
+    ['board-reporting-cyber-risk', 'cybersecurity-insights', 'Reporting Cyber Risk to the Board: Five Metrics That Matter',
+        'Boards need decision-useful information, not vulnerability counts. These five metrics help security leaders tell a clearer story.',
+        '<p>Directors increasingly carry accountability for cyber risk, yet many board packs still contain raw technical statistics. Effective reporting connects security to business outcomes.</p><h2>Five metrics worth reporting</h2><ol><li><strong>Top risks vs appetite</strong> — the handful of risks outside tolerance and the plan for each.</li><li><strong>Critical exposure age</strong> — how long high-severity, internet-facing issues remain open.</li><li><strong>Identity hygiene</strong> — MFA coverage and privileged account reviews completed.</li><li><strong>Recovery readiness</strong> — date and result of the last restore and continuity exercise.</li><li><strong>Third-party posture</strong> — critical vendors assessed and outstanding issues.</li></ol><p>Pair each metric with a trend and a decision you need from the board. That turns reporting into governance.</p>',
+        ['Governance', 'Risk', 'Leadership']],
+];
+
+$pages = [
+    ['privacy-policy', 'Privacy Policy', '<p><strong>Placeholder — please have this policy reviewed by qualified counsel before publication.</strong></p><p>This Privacy Policy explains how Yojo Solutions ("we", "us") collects and uses personal data when you visit this website or contact us.</p><h2>Information we collect</h2><ul><li>Details you submit through enquiry, consultation and assessment forms: name, company, business email, phone, industry, company size, and your message.</li><li>Technical data such as IP address and browser type, used for security and spam prevention.</li></ul><h2>How we use information</h2><p>We use your information to respond to enquiries, schedule consultations, prepare proposals and improve our services. We do not sell personal data.</p><h2>Retention</h2><p>Enquiry data is retained only as long as necessary for the purposes above or as required by law.</p><h2>Your rights</h2><p>You may request access, correction or erasure of your personal data, or withdraw consent, by emailing us at the address on our Contact page.</p><h2>Contact</h2><p>For privacy questions, contact us using the details on the Contact page.</p>'],
+    ['cookie-policy', 'Cookie Policy', '<p><strong>Placeholder — review before publication.</strong></p><p>This website uses a minimal number of cookies.</p><h2>Strictly necessary cookies</h2><p>A session cookie keeps forms secure (CSRF protection) and keeps administrators signed in. These cookies are essential and do not track you across sites.</p><h2>Preferences</h2><p>We store your cookie-banner choice in your browser\'s local storage.</p><h2>Analytics</h2><p>No third-party analytics or advertising cookies are set by default. If analytics are added in future, this policy will be updated and consent requested where required.</p>'],
+    ['terms-and-conditions', 'Terms and Conditions', '<p><strong>Placeholder — review before publication.</strong></p><p>By using this website you agree to these terms.</p><h2>Information only</h2><p>Content on this website is general information and does not constitute legal, audit or professional advice for your specific circumstances. Engagements are governed by a separate signed agreement.</p><h2>Self-assessment tool</h2><p>The Audit Readiness Assessment produces an indicative, preliminary result based solely on your answers. It is not an audit, certification or assurance opinion.</p><h2>Certifications</h2><p>Yojo Solutions does not issue certifications or attestation reports. These are issued by independent accredited bodies or licensed firms.</p><h2>Intellectual property</h2><p>All content on this website is owned by Yojo Solutions unless otherwise stated.</p><h2>Limitation of liability</h2><p>To the extent permitted by law, we are not liable for losses arising from reliance on website content.</p>'],
+];
+
+// Clearly-labelled placeholders (unpublished or flagged) — replace with verified information in Admin.
+$trust = [
+    ['framework', 'ISO/IEC 27001', 'Framework we work with', 1],
+    ['framework', 'SOC 2', 'Framework we work with', 1],
+    ['framework', 'PCI DSS', 'Framework we work with', 1],
+    ['framework', 'NIST CSF 2.0', 'Framework we work with', 1],
+    ['framework', 'DPDPA 2023', 'Regulation we work with', 1],
+    ['framework', 'GDPR', 'Regulation we work with', 1],
+    ['framework', 'HIPAA', 'Regulation we work with', 1],
+    ['framework', 'ISO/IEC 42001', 'Framework we work with', 1],
+    ['framework', 'OWASP', 'Testing methodology we follow', 1],
+    ['framework', 'ISO 22301', 'Framework we work with', 1],
+    ['certification', '[Placeholder] Company certification — add only if verified', 'Upload logo and mark verified before publishing', 0],
+    ['association', '[Placeholder] Industry association membership', 'Publish only with proof of membership', 0],
+    ['partner', '[Placeholder] Technology partner', 'Publish only with a signed partnership', 0],
+    ['client', '[Placeholder] Client logo', 'Publish only with written client permission', 0],
+];
+
+$testimonials = [
+    ['[Sample] Client Name', 'Head of IT', '[Sample] Company', 'This is a sample testimonial to show the layout. Replace it in Admin → Testimonials with a verified quote, and tick "Verified" once the client has approved publication.'],
+    ['[Sample] Client Name', 'Chief Information Security Officer', '[Sample] Company', 'Sample text: describe the engagement, the clarity of reporting and the practical value of the remediation guidance in the client\'s own words.'],
+    ['[Sample] Client Name', 'Compliance Manager', '[Sample] Company', 'Sample text: an approved quote about audit readiness support, responsiveness and outcomes goes here. Unverified items are visibly labelled on the website.'],
+];
+
+$caseStudies = [
+    ['saas-soc2-readiness-illustrative', 'saas-startups', 'SOC 2 readiness for a multi-tenant SaaS platform', 'Illustrative scenario',
+        'A growing SaaS provider was losing enterprise deals because it could not provide an independent assurance report, and controls existed informally in engineers\' heads.',
+        'SOC 2 readiness assessment against the Security and Availability criteria, combined with a cloud configuration review and API security assessment.',
+        "Undocumented change approvals\nShared administrative cloud credentials\nNo formal vendor review process\nIncident response plan never exercised",
+        "Introduced pull-request based change approval with enforced reviews\nMigrated to SSO with MFA and role-based cloud access\nCreated a lightweight vendor risk register\nRan a tabletop exercise and updated the response plan",
+        'The organisation entered its CPA firm\'s observation period with documented, operating controls and a reusable evidence library.'],
+    ['bank-itgc-illustrative', 'banking-financial-services', 'ITGC uplift ahead of statutory audit', 'Illustrative scenario',
+        'Repeated audit observations on user access reviews and change management were increasing audit effort and drawing regulator attention.',
+        'IT General Controls audit across core banking, treasury and general ledger applications, including access, change and operations controls.',
+        "Access reviews performed but not evidenced\nDevelopers with production access\nEmergency changes not retrospectively approved",
+        "Defined a quarterly access review with system-generated listings\nSeparated deployment rights using a release team\nIntroduced an emergency change log with post-implementation approval",
+        'Controls were redesigned and tested before year-end, giving management clear evidence for the statutory auditor.'],
+    ['ecommerce-vapt-illustrative', 'e-commerce', 'Web and API VAPT for an online retailer', 'Illustrative scenario',
+        'Ahead of a peak sales season, an online retailer needed assurance that its checkout and customer APIs could not be abused.',
+        'Authorised web application and API penetration testing covering authentication, authorisation, business logic and payment flow integrations.',
+        "Coupon logic could be replayed\nOrder details exposed via predictable identifiers\nMissing rate limiting on login",
+        "Server-side coupon state validation\nObject-level authorisation checks in the order service\nRate limiting and bot detection on authentication endpoints",
+        'All high-severity issues were fixed and verified in a retest before the sales event.'],
+];
+
+$stats = [
+    // label, value, suffix, description, verified, published
+    ['Service lines', 38, '', 'Dedicated audit, GRC and security services', 1, 1],
+    ['Frameworks covered', 12, '+', 'ISO, SOC 2, PCI DSS, NIST, privacy laws and more', 1, 1],
+    ['Industries served', 8, '', 'Sector-specific programmes', 1, 1],
+    ['Methodology stages', 6, '', 'From consultation to follow-up', 1, 1],
+    ['[Placeholder] Organizations supported', 0, '+', 'Enter a verified figure and publish', 0, 0],
+    ['[Placeholder] Assessments completed', 0, '+', 'Enter a verified figure and publish', 0, 0],
+    ['[Placeholder] Compliance projects', 0, '+', 'Enter a verified figure and publish', 0, 0],
+];
+
+return compact('settings', 'industries', 'faqs', 'postCategories', 'posts', 'pages', 'trust', 'testimonials', 'caseStudies', 'stats');
